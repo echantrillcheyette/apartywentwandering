@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+
+<style>
+
+    body, html {
+    background-color: blue;
+    margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;  
+    }
+
+        #titleContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            height: 100vh;
+            font-family:Arial, Helvetica, sans-serif
+        }
+
+        /*
+#a img {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    z-index: 1000;
+}
+
+#p img {
+    position: absolute;
+    top: 15%;
+    left: 35%;
+}
+
+#a2 img {
+    position: absolute;
+    top: 12%;
+    left: 42%;
+}
+
+#r img {
+    position: absolute;
+    top: 15%;
+    left: 47%;
+}
+
+#t img {
+    position: absolute;
+    top: 12%;
+    left: 52%;
+}
+
+#y img {
+    position: absolute;
+    top: 10%;
+    left: 58%;
+}
+
+#w img {
+    position: absolute;
+    top: 32%;
+    left: 27%;
+}   
+
+#e img {
+    position: absolute;
+    top: 37%;
+    left: 33%;
+}
+
+#n img {
+    position: absolute;
+    top: 35%;
+    left: 38%;
+}
+
+#t2 img {
+    position: absolute;
+    top: 32%;
+    left: 43%;
+}
+
+
+
+#a img {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    z-index: 1000;
+}
+
+#p img {
+    position: absolute;
+    top: 15%;
+    left: 38%;
+}
+
+#a2 img {
+    position: absolute;
+    top: 12%;
+    left: 46%;
+}
+
+#r img {
+    position: absolute;
+    top: 15%;
+    left: 53%;
+}
+
+#t img {
+    position: absolute;
+    top: 10%;
+    left: 60%;
+}
+
+#y img {
+    position: absolute;
+    top: 15%;
+    left: 66%;
+}
+
+#w img {
+    position: absolute;
+    top: 40%;
+    left: 32%;
+}   
+
+#e img {
+    position: absolute;
+    top: 37%;
+    left: 41%;
+}
+
+#n img {
+    position: absolute;
+    top: 38%;
+    left: 48%;
+}
+
+#t2 img {
+    position: absolute;
+    top: 38%;
+    left: 55%;
+}
+*/
+#w2 img {
+    position: absolute;
+    top: 45%;
+    left: 18%;
+}
+
+#a3 img {
+    position: absolute; 
+    top: 49%;
+    left: 26%;
+}
+
+#n2 img {
+    position: absolute;
+    top: 45%;
+    left: 34%;
+}
+
+#d img {
+    position: absolute;
+    top: 48%;       
+    left: 41%;
+}
+
+#e2 img {
+    position: absolute;
+    top: 44%;
+    left: 48%;
+}
+
+#r2 img {
+    position: absolute;
+    top: 48%;
+    left: 54%;
+}
+
+#i img {
+    position: absolute;
+    top: 45%;
+    left: 61%;
+}
+
+#n3 img {
+    position: absolute;
+    top: 45%;
+    left: 66%;
+}
+
+#g img {
+    position: absolute;
+    top: 47%;
+    left: 73%;
+}   
+
+#text1, #text2, #text3 {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#text1 {
+    top: 22%;
+    left: 17%;
+}
+
+#text2 {
+    top: 22%;
+    left: 45%;
+}
+
+#text3 {
+    top: 22%;
+    left: 75%;
+}
+
+#startBtn {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#background {
+             position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background:blue;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 1s ease;
+        }
+
+        #name-input {
+         font-size: 40px;
+        color: white;
+        text-align: center;
+        position: fixed;
+         z-index: 10000;
+          top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+          #userName {
+            opacity: 0;
+              transition: opacity 1s ease;
+              margin-top: 20px;
+              width: 250px;
+                height: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+        }
+
+#display {
+    color: yellow;
+}
+
+#confirmation {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#yesName {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#reName {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#whoToday {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#reintroduce, #doYouLikeParties, #doYouLikeDancing, #wouldYouLikeToDance, #doYouLikeDrinking, #doYouLikeLosingControl, #areYouFirstOrLast, #doYouWantToLeave, #doYouSpendTimeGettingReady, #areYouReady {
+     position: absolute;
+     top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#iAmThis {
+     position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10001;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#yesBtn, #noBtn, #yesNameBtn, #noNameBtn, #reNameBtn, #noReNameBtn, #startBtn, #existingNameBtn, #newNameBtn, #reintroduceBtn, #declineIntroduceBtn, #guestBtn, #strangerBtn, #friendBtn, #yesPartyBtn, #noPartyBtn, #yesDanceBtn, #noDanceBtn, #likeDanceBtn, #dislikeDanceBtn, #yesDrinkBtn, #noDrinkBtn, #yesControlBtn, #noControlBtn, #firstBtn, #lastBtn, #yesLeaveBtn, #noLeaveBtn, #yesReadyBtn, #noReadyBtn, #yesFeelReadyBtn, #noFeelReadyBtn {
+    font-size: 25px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    border: 2px dotted white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#userName {
+    background-color: transparent;
+    border: 2px dotted white;
+    color: white;
+    font-size: 20px;
+    height: 30px;
+    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ #typewriter2, #typewriter5, #typewriter6, #typewriter7, #typewriter8, #typewriter9, #typewriter10, #typewriter11, #typewriter12, #typewriter13, #typewriter14, #typewriter15, #typewriter16, #typewriter17, #typewriter18, #typewriter19, #typewriter20, #typewriter21, #typewriter22, #typewriter23, #typewriter24, #typewriter25 {
+    color: white;
+    font-size: 40px;
+    position: absolute;
+    z-index: 10000;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #typewriter {
+          color: white;
+    font-size: 37px;
+    position: absolute;
+    z-index: 10000;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #typewriter7 {
+        position: absolute;
+         color: white;
+    font-size: 40px;
+    position: absolute;
+    z-index: 10000;
+    left: 50%;
+    top: 32%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #confirm-text {
+        color: white;
+        font-size: 20px;
+        margin-top: 20px;
+        animation: fade-inout 1.5s infinite alternate;
+        visibility: hidden;
+        z-index: 10000;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @keyframes fade-inout {
+  0%{ opacity: 1;}
+  100%{ opacity: 0.25;}
+}
+
+#switchPlayer, #switchPlayer2, #switchPlayer3, #switchPlayer4, #switchPlayer5 {
+    position: absolute;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+    z-index: 10000;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 300px;
+    width: 300px;
+    border: 2px dotted white;
+    justify-content: center;
+    align-items: center;
+     display: flex;
+     left: 38%;
+     top: 20%;
+     visibility: hidden;
+     text-align: center;
+}
+
+#switchBtn, #switchBtn2, #switchBtn3, #switchBtn4, #switchBtn5 {
+     font-family: Arial, Helvetica, sans-serif;
+        color: white;
+     background-color: transparent;
+      border: 2px dotted white;
+    font-size: 20px;
+    padding: 5px;
+    margin: 20px;
+    cursor: pointer;
+   position: absolute;
+   top: 60%;
+}
+
+#beginBtn {
+    position: absolute;
+     font-size: 40px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: 2px dotted white;
+    font-family: Arial, Helvetica, sans-serif;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+          z-index: 10001;
+        display: none;
+}
+
+
+    </style>
+
+<div id = "titleContainer">
+
+    <div id = "text1">
+        a
+    </div>
+
+    <div id = "text2">
+        party
+    </div>
+
+    <div id = "text3">
+        went
+    </div>
+
+   
+
+    <!--
+<div id = "a">
+    <img src = "A2.png" width = "100px" height = "auto">
+</div>
+
+<div id = "p">
+    <img src = "P.png" width = "100px" height = "auto">
+</div>
+
+<div id = "a2">
+    <img src = "A.png" width = "100px" height = "auto">
+</div>
+
+<div id = "r">
+    <img src = "R.png" width = "110px" height = "auto">
+</div>
+
+<div id = "t">
+    <img src = "T.png" width = "90px" height = "auto"> 
+</div>
+
+<div id = "y">
+    <img src = "Y.png" width = "90px" height = "auto"> 
+</div>
+
+<div id = "w">
+    <img src = "W.png" width = "110px" height = "auto">
+</div>
+
+<div id = "e">
+    <img src = "E.png" width = "100px" height = "auto">
+</div>
+
+<div id = "n">
+    <img src = "N.png" width = "100px" height = "auto">
+</div>
+
+<div id = "t2">
+    <img src = "T.png" width = "100px" height = "auto">
+</div>
+    <!--
+<div id = "a">
+    <img src = "A(sketch).png" width = "300px" height = "auto">
+</div>
+
+<div id = "p">
+    <img src = "P(sketch).jpg" width = "300px" height = "auto">
+</div>
+
+<div id = "a2">
+    <img src = "A(sketch).png" width = "270px" height = "auto">
+</div>
+
+<div id = "r">
+    <img src = "R(sketch).png" width = "300px" height = "auto">
+</div>
+
+<div id = "t">
+    <img src = "T(sketch).png" width = "350px" height = "auto"> 
+</div>
+
+<div id = "y">
+    <img src = "Y(sketch).png" width = "350px" height = "auto"> 
+</div>
+
+<div id = "w">
+    <img src = "W(sketch).png" width = "300px" height = "auto">
+</div>
+
+<div id = "e">
+    <img src = "E(sketch).png" width = "300px" height = "auto">
+</div>
+
+<div id = "n">
+    <img src = "N(sketch).png" width = "300px" height = "auto">
+</div>
+
+<div id = "t2">
+    <img src = "T(sketch).png" width = "350px" height = "auto">
+</div>
+-->
+<div id = "w2">
+    <img src = "W2.png" width = "110px" height = "auto">
+</div>
+
+<div id = "a3">
+    <img src = "A3.png" width = "100px" height = "auto">
+</div>
+
+<div id = "n2">
+    <img src = "n.png" width = "100px" height = "auto">
+</div>
+
+<div id = "d">
+    <img src = "d.png" width = "100px" height = "auto">
+</div>
+
+<div id = "e2">
+    <img src = "E2.png" width = "100px" height = "auto">
+</div>
+
+<div id="r2">
+    <img src = "r.png" width = "110px" height = "auto">
+</div>
+
+<div id = "i">
+    <img src = "i.png" width = "70px" height = "auto">
+</div>
+
+<div id = "n3">
+    <img src = "n.png" width = "100px" height = "auto"> 
+</div>
+
+<div id = "g">
+    <img src = "g.png" width = "110px" height = "auto">
+</div>
+
+</div>
+
+<div class = "player-name">
+<div id = "background"></div>
+<div id = "name-input">
+      <span id="typewriter3"></span>
+    <input type="text" id="userName">
+    <div id = "display"></div>
+    <span id="typewriter4"></span>
+    <div id = "confirm-text">
+        press enter to confirm
+    </div>
+</div>
+</div>
+
+
+<button id = "startBtn" onclick = "startGame()">press to start</button>
+
+<div id = "confirmation">
+    <button id = "yesBtn" onclick = "confirmName()">yes</button>
+    <button id = "noBtn" onclick = "denyName()">no</button>
+</div>
+
+<div id = "typewriter2"></div>
+<div id = "typewriter"></div>
+<div id = "typewriter5"></div>
+<div id = "typewriter6"></div>
+<div id = "typewriter7"></div>
+<div id = "typewriter8"></div>
+<div id = "typewriter9"></div>
+<div id = "typewriter10"></div>
+<div id = "typewriter11"></div>
+<div id = "typewriter12"></div>
+<div id = "typewriter13"></div>
+<div id = "typewriter14"></div>
+<div id = "typewriter15"></div>
+<div id = "typewriter16"></div>
+<div id = "typewriter17"></div>
+<div id = "typewriter18"></div>
+<div id = "typewriter19"></div>
+<div id = "typewriter20"></div>
+<div id = "typewriter21"></div>
+<div id = "typewriter22"></div>
+<div id = "typewriter23"></div>
+<div id = "typewriter24"></div>
+<div id = "typewriter25"></div>
+
+<div id = "yesName">
+<button id = "yesNameBtn" onclick = "yesName()">yes</button>
+<button id = "noNameBtn" onclick = "noName()">no</button>
+</div>
+
+<div id = "reName">
+<button id = "reNameBtn" onclick = "reName()">yes</button>
+<button id = "noReNameBtn" onclick = "noReName()">no</button>
+</div>
+
+<div id = "whoToday">
+<button id = "existingNameBtn" onclick = "proceed()"> still
+    <span id = "existingNameText"></span>
+</button>
+<button id = "newNameBtn" onclick = "reEnterName()">something else</button>
+</div>
+
+<div id = "reintroduce">
+    <button id = "reintroduceBtn" onclick = "reintroduce()">yes</button>
+    <button id = "declineIntroduceBtn" onclick = "decline()">no</button>
+</div>
+
+<div id = "iAmThis">
+    <button id = "guestBtn" onclick = "proceed1()">a guest</button>
+    <button id = "strangerBtn" onclick = "proceed1()">a stranger</button>
+    <button id = "friendBtn" onclick = "proceed1()">a friend</button>
+</div>
+
+<div id = "doYouLikeParties">
+    <button id = "yesPartyBtn" onclick = "yesParty()">hell yeah</button>
+    <button id = "noPartyBtn" onclick = "noParty()">not really</button>
+</div>
+
+    <div id = "switchPlayer">
+        <div id = "switchText">SWITCH PLAYER</div>
+        <button id = "switchBtn" onclick = "confirmSwitch()">OK</button>
+    </div>
+
+      <div id = "switchPlayer2">
+        <div id = "switchText2">INVITE SOMEONE TO JOIN YOU AT THE TERMINAL</div>
+        <button id = "switchBtn2" onclick = "confirmSwitch2()">OK</button>
+    </div>
+
+    <div id = "switchPlayer3">
+        <div id = "switchText3">SWITCH PLAYER</div>
+        <button id = "switchBtn3" onclick = "confirmSwitch3()">OK</button>
+    </div>
+
+    <div id = "switchPlayer4">
+        <div id = "switchText4">SWITCH PLAYER</div>
+        <button id = "switchBtn4" onclick = "confirmSwitch4()">OK</button>
+    </div>
+
+    <div id = "switchPlayer5">
+        <div id = "switchText5">IF YOU'D LIKE TO, SWITCH PLAYER</div>
+        <button id = "switchBtn5" onclick = "confirmSwitch5()">OK</button>
+    </div>
+
+<div id = "doYouLikeDancing">
+    <button id = "yesDanceBtn" onclick = "yesDance()">yes</button>
+    <button id = "noDanceBtn" onclick = "noDance()">no</button>
+</div>
+
+<div id = "wouldYouLikeToDance">
+    <button id = "likeDanceBtn" onclick = "likeDance()">yes</button>
+    <button id = "dislikeDanceBtn" onclick = "dislikeDance()">no</button>
+</div>
+
+<div id = "doYouLikeDrinking">
+    <button id = "yesDrinkBtn" onclick = "yesDrink()">yes</button>
+    <button id = "noDrinkBtn" onclick = "noDrink()">no</button>
+</div>
+
+<div id = "doYouLikeLosingControl">
+    <button id = "yesControlBtn" onclick = "yesControl()">yes</button>
+    <button id = "noControlBtn" onclick = "noControl()">no</button>
+</div>
+
+<div id = "areYouFirstOrLast">
+    <button id = "firstBtn" onclick = "first()">first</button>
+    <button id = "lastBtn" onclick = "last()">last</button>
+</div>
+
+<div id = "doYouWantToLeave">
+    <button id = "yesLeaveBtn" onclick = "yesLeave()">kinda...</button>
+    <button id = "noLeaveBtn" onclick = "noLeave()">no!</button>
+</div>
+
+<div id = "doYouSpendTimeGettingReady">
+    <button id = "yesReadyBtn" onclick = "yesReady()">yes</button>
+    <button id = "noReadyBtn" onclick = "noReady()">no</button>
+</div>
+
+<div id = "areYouReady">
+    <button id = "yesFeelReadyBtn" onclick = "yesFeelReady()">yes</button>
+    <button id = "noFeelReadyBtn" onclick = "noFeelReady()">no</button>
+</div>
+
+<button id = "beginBtn" onclick= "window.location.href = 'apartystartshere.html'">okay, let's go!</button>
+
+<audio id="backgroundMusic" src="gamemusic.m4a" autoplay loop></audio>
+<audio id = "startSound" src="select3.wav"></audio>
+
+<script>
+
+var k = 0;
+var txt3 = "what's your name?"; 
+var speed3 = 80;
+
+var i = 0;
+var txt = "is this *really* your name?"; 
+var speed = 80;
+
+var j = 0;
+var txt2 = "have you ever introduced yourself as something else?";
+var speed2 = 80;
+
+var a = 0;
+var txt4 = "oh... do you usually introduce yourself as something other than your name?";
+var speed4 = 80;
+
+var b = 0;
+var txt5 = "would you like to introduce yourself as something else now?";
+var speed5 = 80;
+
+var c = 0;
+var txt6 = "well, here, you can be anyone. who are you today?";
+var speed6 = 80;
+
+var d = 0;
+var txt7 = "well, there's no better place than a party... i guess i'll just call you";
+var speed7 = 80;
+
+var e = 0;
+var txt8 = "do you like to party,";
+var speed8 = 80;
+
+var f = 0;
+var txt9 = "interesting... i think i'll just call you";
+var speed9 = 80;
+
+var g = 0;
+var txt10 = "i guess i'll just call you...";
+
+var h = 0;
+var txt11 = "oh...i see...";
+
+var l = 0;
+var txt12 = "i think you might be in the wrong place";
+
+var m = 0;
+var txt13 = "good. you're in the right place.";
+
+var n = 0;
+var txt14 = "do you like to dance?";
+
+var o = 0;
+var txt15 = "would you like to dance with someone here?";
+
+var p = 0;
+var txt16 = "okay, you can stay sat with me.";
+
+var q = 0;
+var txt17 = "do you like to be drunk or out of your head?";
+
+var r = 0;
+var txt18 = "do you like to lose control?";
+
+var s = 0;
+var txt19 = "it's a good job you're here. every party needs a responsible guest.";
+
+var t = 0;
+var txt20 = "are you usually the first or last to leave?";
+
+var u = 0;
+var txt21 = "do you want to leave now?";
+
+var v = 0;
+var txt22 = "phew, i was worried for a moment.";
+
+var w = 0;
+var txt23 = "do you spend time getting ready to go out?";
+
+var x = 0;
+var txt24 = "do you feel ready now?";
+
+var y = 0;
+var txt25 = "okay, let's go!";
+
+
+
+
+  function fadeOutToBlack() {
+  document.getElementById("background").style.opacity = "1";
+}
+
+/*document.getElementById('startBtn').addEventListener('keydown', function(e) {
+ if (event.key === 'Enter') {
+      startGame();
+    }
+});*/
+
+function startGame() {
+     var selectAudio = document.getElementById("startSound");
+  if (selectAudio) {
+    selectAudio.currentTime = 0;
+    selectAudio.play();
+      }
+    fadeOutToBlack(); 
+    setTimeout(typeWriter3, 1500);
+    setTimeout (function() {
+      document.getElementById("confirm-text").style.visibility = "visible";
+    }, 4500);
+    setTimeout(function() {
+      document.getElementById("textbox").style.opacity = "1";
+    }, 3500);
+     document.getElementById('userName').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        existingName = this.value;
+      document.getElementById('display').textContent = this.value;
+          document.getElementById('existingNameText').textContent = this.value;
+      this.value = ''; // clear the textbox
+      userName.style.display = "none";
+    document.getElementById("typewriter3").style.display = "none";
+    document.getElementById("confirm-text").style.display = "none";
+    setTimeout (function() {
+typeWriter4(txt, 0);
+}, 1000);
+setTimeout (function() {
+  document.getElementById("confirmation").style.display = "block";
+}, 4000);
+    }
+  });
+}
+
+   function typeWriter3() {
+      if (k < txt3.length) {
+        document.getElementById("typewriter3").innerHTML += txt3.charAt(k);
+        k++;
+       setTimeout(typeWriter3, speed3);
+    } else {
+    setTimeout(function() {
+      var userName = document.getElementById("userName");
+      userName.style.opacity = "1";
+    }, 500);
+  }
+}
+
+function typeWriter4(text, i) {
+  if (i < text.length) {
+    document.getElementById("typewriter4").innerHTML += text.charAt(i);
+    setTimeout(function() { typeWriter4(text, i + 1); }, 80);
+  }
+}
+
+function typeWriter2(text, j) {
+  if (j < text.length) {
+    document.getElementById("typewriter2").innerHTML += text.charAt(j);
+    setTimeout(function() { typeWriter2(text, j + 1); }, 80);
+  }
+}
+
+function typeWriter(text, a) {
+  if (a < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(a);
+    setTimeout(function() { typeWriter(text, a + 1); }, 80);
+  }
+}
+
+function typeWriter5(text, b) {
+  if (b < text.length) {
+    document.getElementById("typewriter5").innerHTML += text.charAt(b);
+    setTimeout(function() { typeWriter5(text, b + 1); }, 80);
+  }
+}
+
+function typeWriter6(text, c) {
+  if (c < text.length) {
+    document.getElementById("typewriter6").innerHTML += text.charAt(c);
+    setTimeout(function() { typeWriter6(text, c + 1); }, 80);
+  }
+}
+
+function typeWriter7(text, d) {
+  if (d < text.length) {
+    document.getElementById("typewriter7").innerHTML += text.charAt(d);
+    setTimeout(function() { typeWriter7(text, d + 1); }, 80);
+  }
+}
+
+function typeWriter8(text, e) {
+  if (e < text.length) {
+    document.getElementById("typewriter8").innerHTML += text.charAt(e);
+    setTimeout(function() { typeWriter8(text, e + 1); }, 80);
+  }
+}
+
+function typeWriter9(text, f) {
+  if (f < text.length) {
+    document.getElementById("typewriter9").innerHTML += text.charAt(f);
+    setTimeout(function() { typeWriter9(text, f + 1); }, 80);
+  }
+}
+
+function typeWriter10(text, g) {
+  if (g < text.length) {
+    document.getElementById("typewriter10").innerHTML += text.charAt(g);
+    setTimeout(function() { typeWriter10(text, g + 1); }, 80);
+  }
+}
+
+function typeWriter11(text, h) {
+  if (h < text.length) {
+    document.getElementById("typewriter11").innerHTML += text.charAt(h);
+    setTimeout(function() { typeWriter11(text, h + 1); }, 80);
+  }
+}
+
+function typeWriter12(text, l) {
+  if (l < text.length) {
+    document.getElementById("typewriter12").innerHTML += text.charAt(l);
+    setTimeout(function() { typeWriter12(text, l + 1); }, 80);
+  }
+}
+
+function typeWriter13(text, m) {
+  if (m < text.length) {
+    document.getElementById("typewriter13").innerHTML += text.charAt(m);
+    setTimeout(function() { typeWriter13(text, m + 1); }, 80);
+  }
+}
+
+function typeWriter14(text, n) {
+  if (n < text.length) {
+    document.getElementById("typewriter14").innerHTML += text.charAt(n);
+    setTimeout(function() { typeWriter14(text, n + 1); }, 80);
+  }
+}
+
+function typeWriter15(text, o) {
+  if (o < text.length) {
+    document.getElementById("typewriter15").innerHTML += text.charAt(o);
+    setTimeout(function() { typeWriter15(text, o + 1); }, 80);
+  }
+}
+
+function typeWriter16(text, p) {
+  if (p < text.length) {
+    document.getElementById("typewriter16").innerHTML += text.charAt(p);
+    setTimeout(function() { typeWriter16(text, p + 1); }, 80);
+  }
+}
+
+function typeWriter17(text, q) {
+  if (q < text.length) {
+    document.getElementById("typewriter17").innerHTML += text.charAt(q);
+    setTimeout(function() { typeWriter17(text, q + 1); }, 80);
+  }
+}
+
+function typeWriter18(text, r) {
+  if (r < text.length) {
+    document.getElementById("typewriter18").innerHTML += text.charAt(r);
+    setTimeout(function() { typeWriter18(text, r + 1); }, 80);
+  }
+}
+
+function typeWriter19(text, s) {
+  if (s < text.length) {
+    document.getElementById("typewriter19").innerHTML += text.charAt(s);
+    setTimeout(function() { typeWriter19(text, s + 1); }, 80);
+  }
+}   
+
+function typeWriter20(text, t) {
+  if (t < text.length) {
+    document.getElementById("typewriter20").innerHTML += text.charAt(t);
+    setTimeout(function() { typeWriter20(text, t + 1); }, 80);
+  }
+}
+
+function typeWriter21(text, u) {
+  if (u < text.length) {
+    document.getElementById("typewriter21").innerHTML += text.charAt(u);
+    setTimeout(function() { typeWriter21(text, u + 1); }, 80);
+  }
+}
+
+function typeWriter22(text, v) {
+  if (v < text.length) {
+    document.getElementById("typewriter22").innerHTML += text.charAt(v);
+    setTimeout(function() { typeWriter22(text, v + 1); }, 80);
+  }
+}
+
+function typeWriter23(text, w) {
+  if (w < text.length) {
+    document.getElementById("typewriter23").innerHTML += text.charAt(w);
+    setTimeout(function() { typeWriter23(text, w + 1); }, 80);
+  }
+}
+
+function typeWriter24(text, x) {
+  if (x < text.length) {
+    document.getElementById("typewriter24").innerHTML += text.charAt(x);
+    setTimeout(function() { typeWriter24(text, x + 1); }, 80);
+  }
+}
+
+function typeWriter25(text, y) {
+  if (y < text.length) {
+    document.getElementById("typewriter25").innerHTML += text.charAt(y);
+    setTimeout(function() { typeWriter25(text, y + 1); }, 80);
+  }
+}
+
+function confirmName() {
+    document.getElementById("confirmation").style.display = "none";
+  document.getElementById("typewriter4").style.display = "none";
+    document.getElementById("display").style.display = "none";
+    setTimeout (function() {
+    typeWriter2(txt2, 0);
+    }, 1000);
+    setTimeout (function () {
+    document.getElementById("yesName").style.display = "block";
+}, 6000);
+}
+
+function denyName() {
+    document.getElementById("confirmation").style.display = "none";
+    document.getElementById("display").style.display = "none";
+    document.getElementById("typewriter4").style.display = "none";
+    setTimeout (function() {
+    typeWriter(txt4, 0);
+    }, 1000);
+    setTimeout (function() {
+    document.getElementById("reName").style.display = "block";
+    }, 8000);
+}
+
+function yesName() {
+    document.getElementById("yesName").style.display = "none";
+    document.getElementById("typewriter2").style.display = "none";
+    setTimeout (function() {
+    typeWriter5(txt5, 0);
+    }, 1000);
+    setTimeout (function() {
+    document.getElementById("reintroduce").style.display = "block"
+    }, 7000);
+}
+
+function noName() {
+    document.getElementById("yesName").style.display = "none";
+    document.getElementById("typewriter2").style.display = "none";
+        setTimeout (function() {
+    typeWriter5(txt5, 0);
+    }, 1000);
+    setTimeout (function() {
+    document.getElementById("reintroduce").style.display = "block"
+    }, 7000);
+}
+
+function reName() {
+    document.getElementById("reName").style.display = "none";
+    document.getElementById("typewriter").style.display = "none";
+    setTimeout (function() {
+    typeWriter6(txt6, 0);
+    }, 1000);
+    setTimeout (function() {
+     document.getElementById("iAmThis").style.display = "block";
+    }, 7000);
+}
+
+function noReName() {
+    document.getElementById("reName").style.display = "none";
+    document.getElementById("typewriter").style.display = "none";
+    setTimeout (function() {
+    typeWriter7(txt7, 0);
+    }, 1000);
+    setTimeout (function() {
+    document.getElementById("display").style.display = "block";
+    }, 8000);
+    setTimeout (function() {
+   document.getElementById("typewriter7").style.display = "none";
+   document.getElementById("display").style.display = "none";
+    }, 12000);
+    setTimeout (function() {
+      typeWriter8(txt8, 0);
+    }, 15000);
+    setTimeout (function() {
+      document.getElementById("display").style.display = "block";
+      document.getElementById("display").textContent += "?";
+    }, 18000);
+     setTimeout (function() {
+      document.getElementById("doYouLikeParties").style.display = "block";
+    }, 20000);
+}
+
+function reintroduce() {
+document.getElementById("reintroduce").style.display = "none";
+document.getElementById("typewriter5").style.display = "none";
+setTimeout (function() {
+typeWriter6(txt6,0);
+}, 1000);
+setTimeout (function() {
+  document.getElementById("iAmThis").style.display = "block";
+}, 7000);
+}
+
+function decline() {
+document.getElementById("reintroduce").style.display = "none";
+document.getElementById("typewriter5").style.display = "none";
+setTimeout (function() {
+typeWriter10(txt10,0);
+}, 1000);
+setTimeout (function() {
+    document.getElementById("display").style.display = "block";
+    }, 4000);
+    setTimeout (function() {
+        document.getElementById("typewriter10").style.display = "none";
+        document.getElementById("display").style.display = "none";
+    }, 8000);
+    setTimeout (function() {
+      typeWriter8(txt8, 0);
+    }, 11000);
+    setTimeout (function() {
+      document.getElementById("display").style.display = "block";
+      document.getElementById("display").textContent += "?";
+    }, 14000);
+    setTimeout (function() {
+      document.getElementById("doYouLikeParties").style.display = "block";
+    }, 16000);
+}
+
+function proceed1() {
+    document.getElementById("iAmThis").style.display = "none";
+    document.getElementById("typewriter6").style.display = "none";
+    setTimeout (function() {
+      typeWriter9(txt9, 0);
+    }, 1000);
+    setTimeout (function() {
+      document.getElementById("display").style.display = "block";
+    }, 6000);
+    setTimeout (function() {
+      document.getElementById("typewriter9").style.display = "none";
+      document.getElementById("display").style.display = "none";
+    }, 10000);
+     setTimeout (function() {
+      typeWriter8(txt8, 0);
+    }, 11000);
+    setTimeout (function() {
+      document.getElementById("display").style.display = "block";
+      document.getElementById("display").textContent += "?";
+    }, 13000);
+     setTimeout (function() {
+      document.getElementById("doYouLikeParties").style.display = "block";
+    }, 15000);
+}
+
+
+function yesParty() {
+document.getElementById("doYouLikeParties").style.display = "none";
+document.getElementById("typewriter8").style.display = "none";
+document.getElementById("display").style.display = "none";
+setTimeout (function() {
+  typeWriter13(txt13, 0);
+}, 1000);
+setTimeout (function() {  
+    document.getElementById("typewriter13").style.display = "none";
+}, 7000);
+setTimeout (function() {
+  typeWriter14(txt14, 0);
+}, 9000);
+setTimeout (function() {
+ document.getElementById("doYouLikeDancing").style.display = "block";
+}, 12000);
+}
+
+function noParty() {
+document.getElementById("doYouLikeParties").style.display = "none";
+document.getElementById("typewriter8").style.display = "none";
+document.getElementById("display").style.display = "none";
+setTimeout (function() {
+  typeWriter11(txt11, 0);
+}, 1000);
+setTimeout (function() {
+  document.getElementById("typewriter11").style.display = "none";
+}, 6000);
+setTimeout (function() {
+  typeWriter12(txt12, 0);
+}, 7000);
+setTimeout (function() {
+  document.getElementById("typewriter12").style.display = "none";
+}, 12000);
+setTimeout (function() {
+  document.getElementById("switchPlayer").style.visibility = "visible";
+}, 13000);
+}
+
+
+function yesDance() {
+document.getElementById("doYouLikeDancing").style.display = "none";
+document.getElementById("typewriter14").style.display = "none";
+setTimeout (function() {
+    typeWriter15(txt15, 0);
+    }, 1000);
+setTimeout (function() {
+    document.getElementById("wouldYouLikeToDance").style.display = "block";
+}, 6000);
+}
+
+function noDance() {
+document.getElementById("doYouLikeDancing").style.display = "none";
+document.getElementById("typewriter14").style.display = "none";
+setTimeout (function() {
+    typeWriter16(txt16, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("typewriter16").style.display = "none";
+    }, 6000);
+    setTimeout (function() {
+        typeWriter17(txt17, 0);
+    }, 7000);
+    setTimeout (function() {
+    document.getElementById("doYouLikeDrinking").style.display = "block";
+}, 12000);
+}
+
+function likeDance() {
+document.getElementById("wouldYouLikeToDance").style.display = "none";
+document.getElementById("typewriter15").style.display = "none";
+setTimeout (function() {
+    document.getElementById("switchPlayer2").style.visibility = "visible";
+}, 1000);
+}
+
+function dislikeDance() {
+document.getElementById("wouldYouLikeToDance").style.display = "none";
+document.getElementById("typewriter15").style.display = "none";
+setTimeout (function() {
+    typeWriter16(txt16, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("typewriter16").style.display = "none";
+    }, 6000);
+     setTimeout (function() {
+        typeWriter17(txt17, 0);
+    }, 7000);
+    setTimeout (function() {
+    document.getElementById("doYouLikeDrinking").style.display = "block";
+}, 12000);
+}
+
+
+function confirmSwitch() {
+  document.getElementById("switchPlayer").style.visibility = "hidden";
+  setTimeout (function() {
+  typeWriter14(txt14, 0);
+}, 1000);
+setTimeout (function() {
+ document.getElementById("doYouLikeDancing").style.display = "block";
+}, 6000);
+}
+
+function confirmSwitch2() {
+  document.getElementById("switchPlayer2").style.visibility = "hidden";
+setTimeout (function() {
+    typeWriter17(txt17, 0);
+    }, 1000);
+setTimeout (function() {    
+    document.getElementById("doYouLikeDrinking").style.display = "block";
+}, 6000);
+}
+
+function confirmSwitch3() {
+  document.getElementById("switchPlayer3").style.visibility = "hidden";
+  setTimeout (function() {
+    typeWriter20(txt20, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("areYouFirstOrLast").style.display = "block";
+    }, 6000);
+}
+
+function confirmSwitch4() {
+    document.getElementById("switchPlayer4").style.visibility = "hidden";
+    setTimeout (function() {
+    typeWriter23(txt23, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("doYouSpendTimeGettingReady").style.display = "block";
+    }, 6000);
+}
+
+function confirmSwitch5() {
+    document.getElementById("switchPlayer5").style.visibility = "hidden";
+    setTimeout (function() {
+        document.getElementById("beginBtn").style.display = "block";
+    }, 1000);
+}
+
+function yesDrink() {
+document.getElementById("doYouLikeDrinking").style.display = "none";
+document.getElementById("typewriter17").style.display = "none";
+setTimeout (function() {
+    typeWriter18(txt18, 0);
+    }, 1000);
+     setTimeout (function() {
+    document.getElementById("doYouLikeLosingControl").style.display = "block";
+}, 4000);
+}
+
+function noDrink() {
+    document.getElementById("doYouLikeDrinking").style.display = "none";
+    document.getElementById("typewriter17").style.display = "none";
+setTimeout (function() {
+    typeWriter18(txt18, 0);
+    }, 1000);
+    setTimeout (function() {
+    document.getElementById("doYouLikeLosingControl").style.display = "block";
+}, 4000);
+}
+
+function yesControl() {
+document.getElementById("doYouLikeLosingControl").style.display = "none";
+document.getElementById("typewriter18").style.display = "none";
+setTimeout (function() {
+   document.getElementById("switchPlayer3").style.visibility = "visible";
+}, 1000);
+}
+
+function noControl() {
+document.getElementById("doYouLikeLosingControl").style.display = "none";
+document.getElementById("typewriter18").style.display = "none";
+setTimeout (function() {
+    typeWriter19(txt19, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("typewriter19").style.display = "none";
+    }, 9000);
+setTimeout (function() {
+    typeWriter20(txt20, 0);
+    }, 10000);
+setTimeout (function() {
+    document.getElementById("areYouFirstOrLast").style.display = "block";
+}, 15000);
+}
+
+function first() {
+document.getElementById("areYouFirstOrLast").style.display = "none";
+document.getElementById("typewriter20").style.display = "none";
+setTimeout (function() {
+    typeWriter21(txt21, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("doYouWantToLeave").style.display = "block";
+    }, 6000);
+}
+
+function last() {
+document.getElementById("areYouFirstOrLast").style.display = "none";
+document.getElementById("typewriter20").style.display = "none";
+setTimeout (function() {
+    typeWriter21(txt21, 0);
+    }, 1000);
+     setTimeout (function() {
+        document.getElementById("doYouWantToLeave").style.display = "block";
+    }, 6000);
+}
+
+function yesLeave() {
+document.getElementById("doYouWantToLeave").style.display = "none";
+document.getElementById("typewriter21").style.display = "none";
+setTimeout (function() {
+    document.getElementById("switchPlayer4").style.visibility = "visible";
+}, 1000);
+}
+
+function noLeave() {
+document.getElementById("doYouWantToLeave").style.display = "none";
+document.getElementById("typewriter21").style.display = "none";
+setTimeout (function() {
+    typeWriter22(txt22, 0);
+    }, 1000);
+    setTimeout (function() {
+        document.getElementById("typewriter22").style.display = "none";
+    }, 7000);
+setTimeout (function() {
+    typeWriter23(txt23, 0);
+    }, 9000);
+setTimeout (function() {
+    document.getElementById("doYouSpendTimeGettingReady").style.display = "block";
+}, 12000);
+}
+
+function yesReady() {
+document.getElementById("doYouSpendTimeGettingReady").style.display = "none";
+document.getElementById("typewriter23").style.display = "none";
+setTimeout (function() {
+    typeWriter24(txt24, 0);
+    }, 1000);
+    setTimeout (function() {
+       document.getElementById("areYouReady").style.display = "block";
+    }, 5000);
+}
+
+function noReady() {
+document.getElementById("doYouSpendTimeGettingReady").style.display = "none";
+document.getElementById("typewriter23").style.display = "none";
+setTimeout (function() {
+    typeWriter24(txt24, 0);
+    }, 1000);
+    setTimeout (function() {
+       document.getElementById("areYouReady").style.display = "block";
+    }, 5000);
+}
+
+function yesFeelReady() {
+document.getElementById("areYouReady").style.display = "none";
+document.getElementById("typewriter24").style.display = "none";
+setTimeout (function() {
+    document.getElementById("beginBtn").style.display = "block";
+}, 1000);
+}
+
+function noFeelReady() {
+document.getElementById("areYouReady").style.display = "none";
+document.getElementById("typewriter24").style.display = "none";
+setTimeout (function() {
+    document.getElementById("switchPlayer5").style.visibility = "visible";
+}, 1000);
+}
+
+
+</script>
+
+    </body>
+    </html>

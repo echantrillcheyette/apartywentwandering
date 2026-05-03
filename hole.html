@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        
+<style>
+
+html, body {
+       display: flex;
+background: blue;
+justify-content: center;
+align-items: center;
+margin: 0;
+padding: 0;
+overflow: hidden;
+min-height: 100vh;
+  }
+
+    #scene {
+        background: blue;
+    position: relative;
+    width: 100vw;       
+    height: 100vh;
+  transform: translateY(-40px);
+  top: 40px;
+    }
+
+    #background video {
+    width: 100%;   
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    }
+
+    /*
+    #road {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  position: relative;
+}
+#road img {
+  position: static; 
+}
+  */
+
+    #road img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+    }
+
+  
+
+      #text {
+        color: blue;
+        margin-top: 0;
+        text-align: center;
+        z-index: 10;
+        position: absolute;
+        top: 75%;
+        font-size: 30px;
+        border: 1px solid grey;
+        background: yellow;
+    }
+
+    #text2 {
+        color: blue;
+        margin-top: 0;
+        text-align: center;
+        z-index: 10;
+        position: absolute;
+        top: 85%;
+        font-size: 30px;
+        border: 1px solid grey;
+        background: yellow;
+    }
+   
+    /*
+    @keyframes buzz {
+  0% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(1px) rotate(1deg); }
+  50% { transform: translateY(-1px) rotate(0deg); }
+  75% { transform: translateY(1px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+*/
+    @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeInUp-animation {
+  animation: 3s fadeInUp;
+}
+
+#continue {
+    position: absolute;
+    top: 85%;
+    right: 15%;
+    z-index: 10;
+    display: none;
+    background: yellow;
+    font-size: 40px;
+}
+
+#hoverScene1 {
+position: absolute;
+display: none;
+border: 1px solid black;
+  background: blue;
+  color: white;
+  width: 100px;
+  height: 70px;
+  top: 20%;
+  left: 10px;
+  z-index: 10;
+  padding: 10px;
+  font-size: 14px;
+}
+
+#tp1 img {
+position: absolute;
+top:3%;
+left:-7%;
+width: 350px;
+height: 350px;
+}
+
+#tp2 img {
+    position: absolute;
+top: 2%;
+left: 17%;
+width: 200px;
+height: 200px;
+
+}
+
+#tp3 img {
+    position: absolute;
+top: 3%;
+left: 33%;
+width: 100px;
+height: 100px;
+
+}
+
+#tp4 img {
+    position: absolute;
+    top: 3%;
+right: 33%;
+width: 100px;
+height: 100px;
+}
+
+#tp5 img {
+     position: absolute;
+top: 2%;
+right: 17%;
+width: 200px;
+height: 200px;
+}
+
+#tp6 img {
+position: absolute;
+top:3%;
+right:-7%;
+width: 350px;
+height: 350px;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: ;
+  overflow: hidden;
+}
+#background video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+
+</style>
+
+<div class = "fadeInUp-animation">
+
+<div id = "scene">
+    <span id = "one" onmouseover = "oneBox()" onmouseout="hideBox()">
+<!--
+           <div id = "background">
+    <video autoplay muted loop>
+        <source src="cyberspace5.mp4" type="video/mp4">
+    </video>
+</div>
+-->
+
+<div id = "road">
+    <img src = "road.png">
+       </div>
+
+
+     
+<div id = "tp1">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp2">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp3">
+    <img src = "tpstatic.png">
+</div>
+
+     
+<div id = "tp4">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp5">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp6">
+    <img src = "tpstatic.png">
+</div>
+
+
+       <!--
+     <div id="hoverScene1">
+      Electrical pylons scatter for miles, wires looped to each other.
+    </div>
+-->
+    <div id="hoverScene2">
+    
+    </div>
+
+     </span>
+</div>
+</div>
+
+
+<div id = "text">
+</div>
+
+<div id = "text2"></div>
+
+<div id = "continue">
+    <a href = "beginning.html">>></a>
+</div>
+
+
+<script>
+  var i = 0;
+  var txt = "Something appears in front of you, materialising as if loading in."; /* The text */
+  var speed = 75;
+
+var j = 0;
+    var txt2 = "A kind of road stretches as far as the eye can see."; 
+    var speed2 = 75;
+
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+     } else {
+          // When first message is done, start second
+          setTimeout(typeWriter2, 500); 
+        }
+      }
+
+function typeWriter2() {
+      if (j < txt2.length) {
+        document.getElementById("text2").innerHTML += txt2.charAt(j);
+        j++;
+        setTimeout(typeWriter2, speed2);
+      } 
+    }
+  setTimeout (function() {
+    window.onload = typeWriter();
+  }, 2000);
+ 
+  function showContinue() {
+    document.getElementById("continue").style.display = "block";
+  }
+
+  setTimeout (function() {
+    window.onload = showContinue();
+  }, 15000);
+  
+function oneBox() {
+    document.getElementById("hoverScene1").style.display = "block";
+  }
+
+  function hideBox() {
+    document.getElementById("hoverScene1").style.display = "none";
+  }
+
+</script>
+
+</body>
+</html>
