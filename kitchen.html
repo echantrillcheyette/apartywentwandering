@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        
+<style>
+
+  html, body {
+justify-content: center;
+overflow: hidden;
+  }
+
+.kitchen {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#fridge {
+  position: absolute;
+  left: 42%;
+  z-index: 1;
+}
+
+#sink {
+position: absolute;
+top: 43%;
+left: 57%;
+z-index: 1;
+}
+
+#shelf {
+position: absolute;
+ top: 10%;
+left: 57%;
+}
+
+#counter {
+position: absolute;
+top:43%;
+left: 29%;
+
+}
+
+#bunting {
+  position: absolute;
+top:11%;
+left: 26%;
+}
+
+#hoverBunting {
+  position: absolute;
+display: none;
+border: 1px solid black;
+  background: white;
+  width: 200px;
+  height: 100px;
+  top: 15%;
+  left: 60%;
+  z-index: 10;
+  font-family: 'arial', Helvetica, sans-serif;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#hoverFridge {
+position: absolute;
+display: none;
+border: 1px solid black;
+  background: white;
+  width: 200px;
+  height: 100px;
+  top: 20%;
+  left: 40%;
+  z-index: 10;
+  font-family: 'arial', Helvetica, sans-serif;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#hoverSink {
+position: absolute;
+display: none;
+border: 1px solid black;
+  background: white;
+   width: 200px;
+  height: 70px;
+  top: 30%;
+  left: 50%;
+  z-index: 10;
+  font-family: 'arial', Helvetica, sans-serif;
+  padding: 10px; 
+  font-size: 16px;
+}
+
+#hoverCounter {
+position: absolute;
+display: none;
+border: 1px solid black;
+  background: white;
+    width: 200px;
+  height: 140px;
+  top: 30%;
+  left: 20%;
+  z-index: 10;
+  font-family: 'arial', Helvetica, sans-serif;
+  padding: 10px;
+  font-size: 16px;
+}
+
+       #text {
+        font-family:'Courier New', Courier, monospace;
+        color: black;
+        margin-top: 20px;
+        text-align: center;
+        z-index: 10;
+        position: absolute;
+        top: 80%;
+        font-size: 18px;
+    }
+
+    #objective {
+        display: none;
+        font-family:'Courier New', Courier, monospace;
+        color: black;
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+        z-index: 10;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        font-size: 18px;
+    }
+
+  </style>
+
+  <audio id = "backgroundMusic" autoplay loop>
+  <source src="partytheme2(amplified).mp3" type="audio/mpeg">
+</audio>
+
+<div class = "kitchen">
+
+   <div id = "text"></div>
+  
+<div id = "fridge">
+  <span id = "one" onmouseover = "oneBox()" onmouseout="hideBox()">
+    <a href="fridge.html">
+    <img src="fridge3.png" style = "width: 60%; height: auto;">
+    </a>
+    </span>
+    </div>
+
+    <div id = "hoverFridge">
+      A fridge sits at the centre, scattered with magnets (brightly coloured chunks, like the ones you had when you were a kid).
+      </div>
+
+    <div id = "sink">
+      <span id = "two" onmouseover = "twoBox()" onmouseout="hideBox2()">
+    <img src="sink.png" style = "width: 60%; height: auto;">
+    </span>
+    </div>
+
+    <div id = "hoverSink">
+     A sink sits to the right, weirdly clean. A tap drips (steadily, pulsing).
+      </div>
+
+    <div id = "shelf">
+    <img src="shelf.png" style = "width: 60%; height: auto;">
+    </div>
+
+    <div id = "counter">
+      <span id = "three" onmouseover = "threeBox()" onmouseout="hideBox3()">
+    <img src="drinkscounter.png" style = "width: 60%; height: auto;">
+    </span>
+    </div>
+
+<div id = "hoverCounter">
+  A counter sits to the left, with an assortment of spirits, wines and mixers. You note four bottles of wine (identical, with the price label clearly scratched off).
+</div>
+
+<div id = "bunting">
+  <span id = "four" onmouseover = "fourBox()" onmouseout="hideBox4()">
+    <img src="bunting2.png" style = "width: 60%; height: auto;">
+    </span>
+</div>
+
+<div id = "hoverBunting">
+  Brightly coloured bunting is strung from the ceiling (in little fabric patches, squeezed along thread piping).
+    </div>
+
+    <div id = "objective">
+      current objective: find a drink 
+    </div>
+
+<script>
+
+window.onload = function() {
+  /*alert("current objective: find a cold beer"); */
+  typeWriter();
+};
+
+  var i = 0;
+  var txt = ">You enter the kitchen. The perfect place to find a cold beer."; /* The text */
+  var speed = 80;
+
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+     }
+      }
+  
+  function oneBox() {
+    document.getElementById("hoverFridge").style.display = "block";
+  }
+
+  function hideBox() {
+    document.getElementById("hoverFridge").style.display = "none";
+  }
+
+  function twoBox() {
+    document.getElementById("hoverSink").style.display = "block";
+  }
+
+    function hideBox2() {
+    document.getElementById("hoverSink").style.display = "none";
+  }
+
+   function threeBox() {
+    document.getElementById("hoverCounter").style.display = "block";
+  }
+
+    function hideBox3() {
+    document.getElementById("hoverCounter").style.display = "none";
+  }
+  
+   function fourBox() {
+    document.getElementById("hoverBunting").style.display = "block";
+  }
+
+    function hideBox4() {
+    document.getElementById("hoverBunting").style.display = "none";
+  }
+
+  setTimeout (function() {
+    document.getElementById('objective').style.display = 'block';
+  }, 8000);
+
+
+</script>
+
+
+
+  </body>
+
+</html>
