@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+
+      <style>
+
+html, body {
+  background: black;
+}
+
+#finalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+
+#background {
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+#background video {
+  width: 50vw;
+  height: 60vh;
+  object-fit: cover;
+  border: 1px solid white;
+}
+
+#opponent {
+  position: absolute;
+  top: 33%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+#angryOpponent, #punchOpponent {
+  position: absolute;
+  top: 33%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+#textBox {
+  position: absolute;
+  top: 66%;
+  left: 8%;
+border: 1px solid white;
+width: 440px;
+height: 100px;
+}
+
+#textBox2, #textBox3, #textBox4, #textBox5, #textBox6, #textBox7, #textBox8, #textBox9, #textBox10, #textBox11, #textBox12, #textBox13, #textBox14, #textBox15, #textBox16, #textBox17, #textBox18, #textBox19 {
+  position: absolute;
+  top: 66%;
+  left: 8%;
+border: 1px solid white;
+width: 440px;
+height: 100px;
+z-index: 1;
+display: none;
+}
+
+#battleText {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: white;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+/*
+
+#healthContainer1 {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+#healthContainer2 {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 80%;
+}
+*/
+
+#yourStats {
+  background: black;
+  position: absolute;
+  border: 2px dotted white;
+  width: 150px;
+  height: 50px;
+  top: 10%;
+  left: 5%;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+#oppStats {
+  background: black;
+  position: absolute;
+  border: 2px dotted white;
+  width: 150px;
+  height: 50px;
+  top: 10%;
+  left: 80%;
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+}
+
+#yrStatsText {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  margin: 20px;
+left: 50px;
+top: 13px;
+font-size: 18px;
+}
+
+#oppStatsText {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  margin: 20px;
+  font-size: 18px;
+  top: 13px;
+  left: 80%;
+}
+
+#yrHealthText2 {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+ margin: 10px;
+ font-size: 18px;
+}
+
+#oppHealthText2 {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+ margin: 10px;
+ font-size: 18px;
+}
+
+#yrHealthValue {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  margin: 10px;
+  font-size: 18px;
+  position: absolute;
+  top: 2px;
+  left: 91px;
+}
+
+#oppHealthValue {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  margin: 10px;
+  font-size: 18px;
+  position: absolute;
+  top: 2px;
+  left: 91px;
+}
+/*
+#yrAttackText {
+  margin: 10px;
+  font-size: 18px;
+  margin-left: 15px;
+}
+  */
+
+#actionBox, #actionBox2, #actionBox3, #actionBox4 {
+  position: absolute;
+  top: 66%;
+  left: 14%;
+  border: 1px solid white;
+  width: 220px;
+  height: 150px;
+  background-color: black;
+  display: none;
+}
+
+ #insultBox, #insultBox2, #insultBox3 {
+  position: absolute;
+  top: 66%;
+  left: 14%;
+  border: 1px solid white;
+  width: 220px;
+  height: 150px;
+  background-color: black;
+  display: none;
+ }
+
+#attackButton, #calmButton, #attackButton2, #calmButton2 {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background: black;
+  margin: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px dotted white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#punchButton, #attackButton3 {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background: black;
+  margin: 10px;
+  margin-top: 40px;
+  padding: 10px;
+  border: 1px dotted white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#calmButton3 {
+   font-family: 'Courier New', Courier, monospace;
+  color: white;
+  background: black;
+  margin: 10px;
+  margin-top: 60px;
+  padding: 10px;
+  border: 1px dotted white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#dialogue1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: white;
+  padding: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+  z-index: 10000;
+}
+
+ #dialogue2 {
+   font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: white;
+  padding: 20px;
+  margin-top: 15px;
+  margin-left: 20px;
+  z-index: 10000;
+ }
+
+ #dialogue3, #dialogue4, #dialogue5, #dialogue6, #dialogue7, #dialogue8, #dialogue9, #dialogue10, #dialogue11, #dialogue12, #dialogue13, #dialogue14, #dialogue15, #dialogue16, #dialogue17, #dialogue18, #dialogue19 {
+   font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: white;
+  padding: 20px;
+  margin-top: 15px;
+  margin-left: 20px;
+  z-index: 10000;
+ }
+
+ /*
+ #background {
+             position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background:black;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 1s ease;
+        }
+
+        */
+
+#insult, #insult2, #insult3 {
+  font-size: 15px;
+  margin-top: 30px;
+        color: white;
+        text-align: center;
+         z-index: 10000;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+      #confirm-text, #confirm-text2, #confirm-text3 {
+        color: white;
+        font-size: 12px;
+        margin-top: 10px;
+        animation: fade-inout 1.5s infinite alternate;
+        visibility: hidde;
+        z-index: 10000;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    @keyframes fade-inout {
+  0%{ opacity: 1;}
+  100%{ opacity: 0.25;}
+}
+
+
+#displayBox {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  position: absolute;
+  top: 66%;
+  left: 8%;
+  border: 1px solid white;
+  width: 440px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+#display {
+  font-size: 18px;
+  color: white;
+  z-index: 10000;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  display: inline-block;
+}
+
+#displayText {
+  font-size: 18px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: none;
+  margin-left: 20px;
+}
+
+#fist {
+  position: absolute;
+  display: none;
+}
+
+#fist img {
+  width: 60%;
+  height: auto;
+}
+
+#k {
+  position: absolute;
+  left: 60%;
+  top: 20%;
+  display: none;
+}
+
+#k img {
+  width: 55%;
+  height: auto;
+}
+
+#o {
+  position: absolute;
+  left: 70%;
+  top: 24%;
+  display: none;
+}
+
+#o img {
+  width: 68%;
+  height: auto;
+}
+
+#ko {
+  font-family: 'Courier New', Courier, monospace;
+  color: white;
+  font-size: 175px;
+  position: absolute;
+  left: 80%;
+  top: 22%;
+  display: none;
+}
+
+#finalTxt1, #finalTxt2, #finalTxt3, #finalTxt4, #finalTxt5, #finalTxt6, #finalTxt7, #finalTxt8, #finalTxt9 {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 30px;
+        justify-content: center;
+        text-align: center;
+        z-index: 10000;
+}
+
+#endButton {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  background: black;
+  padding: 10px;
+  border: 1px dotted white;
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 10000;
+}
+
+      </style>
+
+   <audio id="battleAudio" src="battle.m4a" autoplay loop></audio>
+   <audio id = "finalAudio" src="gamemusic2.m4a"></audio>
+
+   <audio id = "punchAudio" src="punch2.mp3"></audio>
+
+        <div id = "background">
+    <video autoplay muted loop>
+        <source src="cyberspace 2.2.mp4" type="video/mp4">
+    </video>
+
+    <div id = "opponent">
+      <img src = "opponent(guest).png">
+    </div>
+
+    <div id = "angryOpponent">
+      <img src = "opponent(fist).png">
+    </div>
+
+    <div id = "punchOpponent">
+      <img src = "opponent(punch).png">
+    </div>
+
+    <div id = "textBox">
+    <div id = "battleText">
+      You are confronted by DRUNK GUEST.
+      </div>
+      </div>
+
+       <div id = "textBox2">
+    <div id = "dialogue1">
+      </div>
+      </div>
+
+       <div id = "textBox3">
+    <div id = "dialogue2">
+      </div>
+      </div>
+
+        <div id = "textBox4">
+    <div id = "dialogue3">
+      </div>
+      </div>
+
+       <div id = "textBox5">
+    <div id = "dialogue4">
+      </div>
+      </div>
+
+       <div id = "textBox6">
+    <div id = "dialogue5">
+      </div>
+      </div>
+
+         <div id = "textBox7">
+    <div id = "dialogue6">
+      </div>
+      </div>
+
+         <div id = "textBox8">
+    <div id = "dialogue7">
+      </div>
+      </div>
+      
+         <div id = "textBox9">
+    <div id = "dialogue8">
+      </div>
+      </div>
+
+      <div id = "textBox10">
+    <div id = "dialogue9">
+      </div>
+      </div>
+
+      <div id = "textBox11">
+    <div id = "dialogue10">
+      </div>
+      </div>
+
+      <div id = "textBox12">
+    <div id = "dialogue11">
+      </div>
+      </div>
+
+      <div id = "textBox13">
+    <div id = "dialogue12">
+      </div>
+      </div>
+
+      <div id = "textBox14">
+    <div id = "dialogue13">
+      </div>
+      </div>
+
+      <div id = "textBox15">
+    <div id = "dialogue14">
+      </div>
+      </div>
+
+      <div id = "textBox16">
+    <div id = "dialogue15">
+      </div>
+      </div>
+
+      <div id = "textBox17">
+    <div id = "dialogue16">
+      </div>
+      </div>
+
+      <div id = "textBox18">
+    <div id = "dialogue17">
+      </div>
+      </div>
+
+      <div id = "textBox19">
+    <div id = "dialogue18">
+      </div>
+      </div>
+
+      <div id = "displayBox"> 
+  <div id = "displayText">YOU: </div>
+  <div id = "display"></div>
+</div>
+
+</div>
+
+ <div id = "yrStatsText">YOU</div>
+
+<div id = "yourStats">
+  <div id = "yrHealthText2">health :</div>
+  <div id = "yrHealthValue">100</div>
+  <!--<div id = "yrAttackText">attack :</div>
+  <div id = "yrAttackValue"></div>-->
+</div>
+
+ <div id = "oppStatsText">GUEST</div>
+<div id = "oppStats">
+  <div id = "oppHealthText2">health :</div>
+  <div id = "oppHealthValue">100</div>
+  <!--<div id = "oppAttackText">attack :</div>
+  <div id = "oppAttackValue"></div>-->
+</div>
+
+<div id = "actionBox">
+  <button id = "attackButton" onclick = "firstAttack()">>insult</button>
+<button id = "calmButton" onclick = "firstCalm()">>try and calm down</button>
+</div>
+
+<div id = "actionBox2">
+  <button id = "attackButton2" onclick = "thirdAttack()">>insult</button>
+<button id = "calmButton2" onclick = "secondCalm()">>try and calm down</button>
+</div>
+
+<div id = "actionBox3">
+  <button id = "punchButton" onclick = "punchBack()">>punch</button>
+  <button id = "attackButton3" onclick = "fourthAttack()">>insult</button>
+</div>
+
+<div id = "actionBox4">
+  <button id = "calmButton3" onclick = "thirdCalm()">>try and calm down</button>
+</div>
+
+<div id = "insultBox">
+  <div id = "insult">
+  <!--<div id = "background"></div>-->
+  <div id = "insultText">ENTER YOUR INSULT!</div>
+  <input type="text" id = "insultTextBox">
+    <div id = "confirm-text">
+        press enter to confirm
+    </div>
+    </div>
+</div>
+
+
+<div id = "insultBox2">
+  <div id = "insult2">
+  <!--<div id = "background"></div>-->
+  <div id = "insultText2">ENTER YOUR INSULT!</div>
+  <input type="text" id = "insultTextBox2">
+    <div id = "confirm-text2">
+        press enter to confirm
+    </div>
+    </div>
+</div>
+
+<div id = "insultBox3">
+  <div id = "insult3">
+  <!--<div id = "background"></div>-->
+  <div id = "insultText3">ENTER YOUR INSULT!</div>
+  <input type="text" id = "insultTextBox3">
+    <div id = "confirm-text3">
+        press enter to confirm
+    </div>
+    </div>
+</div>
+
+ <div id = "fist">
+      <img src = "fist.png">
+    </div>
+
+    
+    <div id = "k">
+      <img src = "K.png">
+    </div>
+    <div id = "o"><img src = "O.png"></div>
+
+ <div id = "ko">!</div>
+
+ <div id="finalBackground"></div>
+
+<div id = "finalTxt1"></div>
+<div id = "finalTxt2"></div>
+<div id = "finalTxt3"></div>
+<div id = "finalTxt4"></div>
+<div id = "finalTxt5"></div>
+<div id = "finalTxt6"></div>
+<div id = "finalTxt7"></div>
+<div id = "finalTxt8"></div>
+<div id = "finalTxt9"></div>
+
+<button id = "endButton" onclick="window.location.href='end.html'">You go.</button>
+
+<div>
+<audio id="typeAudio" src="blip.mp3"></audio>
+</div>
+
+<!--
+<div id = "healthContainer1">YOU<br>
+<progress id="health" value="100" max="100"></progress>
+</div>
+
+<div id = "healthContainer2">GUEST<br>
+<progress id="health2" value="100" max="100"></progress>
+</div>
+
+<script>
+  /*let health = document.getElementById("health")
+health.value -= 10; */
+</script>
+
+-->
+
+<script>
+
+let yrHealth = 100;
+document.getElementById('yrHealthValue').textContent = yrHealth;
+
+let oppHealth = 100;
+document.getElementById('oppHealthValue').textContent = oppHealth;
+
+  var a = 0;
+  var txt = "GUEST: hey, dickhead! did you just spill MY milk?!"
+  var speed = 80;
+
+  var b = 0;
+  var txt2 = "GUEST is too drunk to listen."
+
+  var c = 0;
+  var txt3 = "GUEST: what did you just say?!"
+
+  var d = 0;
+  var txt4 = "YOU deal 10 damage."
+
+  var e = 0;
+  var txt5 = "GUEST deals 30 damage."
+
+  var f = 0;
+  var txt6 = "GUEST: you’re udderly stupid if you think you can get away with that!"
+
+  var g = 0;
+  var txt7 = "GUEST: you look like you're lactose intolerant!"
+
+  var h = 0;
+  var txt8 = "GUEST: is that the best you can do?! you milksop! you cow-ard!"
+
+  var i = 0;
+  var txt9 = "GUEST throws a punch!"
+
+  var j = 0;
+  var txt10 = "GUEST deals 50 damage."
+
+  var k = 0;
+  var txt11 = "YOU are feeling nervous. YOU swing and you miss!"
+
+  var l = 0;
+  var txt12 = "GUEST: whey too slow, loser!"
+
+  var m = 0;
+  var txt13 = "GUEST charges their fist."
+
+  var n = 0;
+  var txt14 = "YOU take a deep breath. YOU regain 20 health."
+
+  var o = 0;
+  var txt15 = "YOU prepare for the hit."
+
+  var p = 0;
+  var txt16 = "YOU deal 30 damage."
+
+  var q = 0;
+  var txt17 = "GUEST: i'm still whey ahead of you!"
+
+  var r = 0;
+  var txt18 = "GUEST: CHURN THIS, BITCH!"
+
+  var s = 0;
+  var txt19 = "Out of nowhere, a fist."
+
+  var t = 0;
+  var txt20 = "You feel as a fist strikes into you and sends you flying (backward, into something)."
+
+  var u = 0;
+  var txt21 = "You feel your body make contact with the wall behind you as it slams against the surface."
+
+  var v = 0;
+  var txt22 = "...At least it *should* slam against the surface."
+
+  var w = 0;
+  var txt23 = "You anticipated the slam."
+
+  var x = 0;
+  var txt24 = "You braced for the slam."
+
+    var y = 0;
+  var txt25 = "...Only something isn't right."
+
+  var z = 0;
+var txt26 = "You feel something tear, something crack open."
+
+var a1 = 0;
+var txt27 = "You are aware of your body as it refuses to stop, as it makes a You-shaped hole and, through it,"
+
+
+  window.onload = function() {
+    setTimeout(function() {
+    document.getElementById("textBox2").style.display = "block";
+     document.getElementById("battleText").style.display = "none";
+     typeWriter()
+  }, 3000);
+  setTimeout (function() {
+     document.getElementById("actionBox").style.display = "block";
+  }, 8500);
+  };
+
+  function typeWriter() {
+    if (a < txt.length) {
+      document.getElementById("dialogue1").innerHTML += txt.charAt(a);
+      a++;
+      setTimeout(typeWriter, speed);
+     }
+    }
+
+    function typeWriter2 () {
+      if (b < txt2.length) {
+      document.getElementById("dialogue2").innerHTML += txt2.charAt(b);
+      b++;
+      setTimeout(typeWriter2, speed);
+     }
+    }
+
+      function typeWriter3 () {
+      if (c < txt3.length) {
+      document.getElementById("dialogue3").innerHTML += txt3.charAt(c);
+      c++;
+      setTimeout(typeWriter3, speed);
+     }
+    }
+
+       function typeWriter4 () {
+      if (d < txt4.length) {
+      document.getElementById("dialogue4").innerHTML += txt4.charAt(d);
+      d++;
+      setTimeout(typeWriter4, speed);
+     }
+    }
+
+      function typeWriter5 () {
+      if (e < txt5.length) {
+      document.getElementById("dialogue5").innerHTML += txt5.charAt(e);
+      e++;
+      setTimeout(typeWriter5, speed);
+     }
+    }
+
+    function typeWriter6 () {
+      if (f < txt6.length) {
+      document.getElementById("dialogue6").innerHTML += txt6.charAt(f);
+      f++;
+      setTimeout(typeWriter6, speed);
+     }
+    }
+
+     function typeWriter7 () {
+      if (g < txt7.length) {
+      document.getElementById("dialogue7").innerHTML += txt7.charAt(g);
+      g++;
+      setTimeout(typeWriter7, speed);
+     }
+    }
+
+    function typeWriter8 () {
+      if (h < txt8.length) {
+      document.getElementById("dialogue8").innerHTML += txt8.charAt(h);
+      h++;
+      setTimeout(typeWriter8, speed);
+     }
+    }
+
+    function typeWriter9 () {
+      if (i < txt9.length) {
+      document.getElementById("dialogue9").innerHTML += txt9.charAt(i);
+      i++;
+      setTimeout(typeWriter9, speed);
+     }
+    }
+
+      function typeWriter10 () {
+        if (j < txt10.length) {
+        document.getElementById("dialogue10").innerHTML += txt10.charAt(j);
+        j++;
+        setTimeout(typeWriter10, speed);
+      }
+      }
+
+      function typeWriter11 () {
+        if (k < txt11.length) {
+        document.getElementById("dialogue11").innerHTML += txt11.charAt(k);
+        k++;
+        setTimeout(typeWriter11, speed);
+      }
+      }
+
+      function typeWriter12 () {
+        if (l < txt12.length) {
+        document.getElementById("dialogue12").innerHTML += txt12.charAt(l);
+        l++;
+        setTimeout(typeWriter12, speed);
+      }
+      }
+      
+       function typeWriter13 () {
+        if (m < txt13.length) {
+        document.getElementById("dialogue13").innerHTML += txt13.charAt(m);
+        m++;
+        setTimeout(typeWriter13, speed);
+      }
+      }
+
+      function typeWriter14 () {
+        if (n < txt14.length) {
+        document.getElementById("dialogue14").innerHTML += txt14.charAt(n);
+        n++;
+        setTimeout(typeWriter14, speed);
+      }
+      }
+
+       function typeWriter15 () {
+        if (o < txt15.length) {
+        document.getElementById("dialogue15").innerHTML += txt15.charAt(o);
+        o++;
+        setTimeout(typeWriter15, speed);
+      }
+      }
+
+      function typeWriter16 () {
+        if (p < txt16.length) {
+        document.getElementById("dialogue16").innerHTML += txt16.charAt(p);
+        p++;
+        setTimeout(typeWriter16, speed);
+      }
+      }
+      
+      function typeWriter17 () {
+        if (q < txt17.length) {
+        document.getElementById("dialogue17").innerHTML += txt17.charAt(q);
+        q++;
+        setTimeout(typeWriter17, speed);
+      }
+      }
+
+      function typeWriter18 () {
+        if (r < txt18.length) {
+        document.getElementById("dialogue18").innerHTML += txt18.charAt(r);
+        r++;
+        setTimeout(typeWriter18, speed);
+      }
+      }
+
+        function finalTypeWriter1 () {
+          if (s < txt19.length) {
+          document.getElementById("finalTxt1").innerHTML += txt19.charAt(s);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          s++;
+          setTimeout(finalTypeWriter1, speed);
+        }
+        }
+
+        function finalTypeWriter2 () {
+          if (t < txt20.length) {
+          document.getElementById("finalTxt2").innerHTML += txt20.charAt(t);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          t++;
+          setTimeout(finalTypeWriter2, speed);
+        }
+        }
+
+        function finalTypeWriter3 () {
+          if (u < txt21.length) {
+          document.getElementById("finalTxt3").innerHTML += txt21.charAt(u);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          u++;
+          setTimeout(finalTypeWriter3, speed);
+        }
+        }
+
+        function finalTypeWriter4 () {
+          if (v < txt22.length) {
+          document.getElementById("finalTxt4").innerHTML += txt22.charAt(v);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          v++;
+          setTimeout(finalTypeWriter4, speed);
+        }
+        }
+
+        function finalTypeWriter5 () {
+          if (w < txt23.length) {
+          document.getElementById("finalTxt5").innerHTML += txt23.charAt(w);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          w++;
+          setTimeout(finalTypeWriter5, speed);
+        }
+        }
+
+        function finalTypeWriter6 () {
+          if (x < txt24.length) {
+          document.getElementById("finalTxt6").innerHTML += txt24.charAt(x);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          x++;
+          setTimeout(finalTypeWriter6, speed);
+        }
+        }
+
+        function finalTypeWriter7 () {
+          if (y < txt25.length) {
+          document.getElementById("finalTxt7").innerHTML += txt25.charAt(y);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          y++;
+          setTimeout(finalTypeWriter7, speed);
+        }
+        }
+
+        function finalTypeWriter8 () {
+          if (z < txt26.length) {
+          document.getElementById("finalTxt8").innerHTML += txt26.charAt(z);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          z++;
+          setTimeout(finalTypeWriter8, speed);
+        }
+        }
+
+        function finalTypeWriter9 () {
+          if (a1 < txt27.length) {
+          document.getElementById("finalTxt9").innerHTML += txt27.charAt(a1);
+           var audio = document.getElementById("typeAudio");
+    audio.currentTime = 0;
+    audio.play();
+          a1++;
+          setTimeout(finalTypeWriter9, speed);
+        }
+        }
+
+  function firstAttack() {
+document.getElementById("actionBox").style.display = "none";
+document.getElementById("insultBox").style.display = "block";
+document.getElementById("displayText").style.display = "block";
+document.getElementById("dialogue1").style.display = "none";
+  }
+
+function enterInsult() {
+  setTimeout (function() {
+      document.getElementById("textBox5").style.display = "block";
+      document.getElementById("dialogue4").style.display = "block";
+   typeWriter4();
+        }, 2000);
+          setTimeout (function() {
+          document.getElementById("textBox5").style.display = "none";
+          document.getElementById("dialogue4").style.display = "none";
+        }, 5000);
+oppHealth -=10;
+if (oppHealth < 0) health = 0;
+document.getElementById('oppHealthValue').textContent = oppHealth;
+}
+
+function secondAttack() {
+yrHealth -=30;
+if (yrHealth < 0) health = 0;
+document.getElementById('yrHealthValue').textContent = yrHealth;
+}
+
+function thirdHit() {
+yrHealth -=50;
+if (yrHealth < 0) health = 0;
+document.getElementById('yrHealthValue').textContent = yrHealth;
+}
+
+function KO() {
+yrHealth = 0;
+  document.getElementById('yrHealthValue').textContent = yrHealth;
+}
+
+
+  function firstCalm () {
+document.getElementById("dialogue1").style.display = "none";
+document.getElementById("textBox2").style.display = "none";
+document.getElementById("textBox3").style.display = "block";
+  document.getElementById("dialogue2").innerHTML = "";
+  setTimeout (function() {
+typeWriter2();
+  }, 500);
+setTimeout (function () {
+  document.getElementById("textBox3").style.display = "none";
+}, 3700);
+  }
+
+  document.getElementById('insultTextBox').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('display').textContent = this.value;
+        this.value = '';
+        document.getElementById('insultBox').style.display = "none";
+        document.getElementById('displayBox').style.display = "flex";
+        enterInsult();
+        setTimeout (function() {
+          document.getElementById('displayBox').style.display = "none";
+        }, 2000);
+        setTimeout (function() {
+document.getElementById("textBox4").style.display = "block";
+          typeWriter3();
+        }, 6000);
+        setTimeout (function() {
+            document.getElementById("angryOpponent").style.display = "block";
+          document.getElementById("textBox4").style.display = "none";
+          document.getElementById("textBox5").style.display = "block";
+          typeWriter4();
+        }, 10000);
+        setTimeout (function() {
+          document.getElementById("textBox7").style.display = "block";
+          document.getElementById("dialogue6").style.display = "block";
+          typeWriter6();
+        }, 10500);
+        setTimeout (function() {
+          document.getElementById("textBox7").style.display = "none";
+          document.getElementById("dialogue6").style.display = "none";
+        }, 18000);
+        setTimeout (function() {
+          document.getElementById("textBox8").style.display = "block";
+          document.getElementById("dialogue7").style.display = "block";
+          typeWriter7();
+        }, 20000);
+        setTimeout (function() {
+          document.getElementById("textBox8").style.display = "none";
+          document.getElementById("dialogue7").style.display = "none";
+        }, 27000);
+        setTimeout (function() {
+          document.getElementById("textBox6").style.display = "block";
+          document.getElementById("dialogue5").style.display = "block";
+          typeWriter5();
+            secondAttack();
+        }, 28000);
+          setTimeout (function() {
+            document.getElementById("textBox6").style.display = "none";
+            document.getElementById("dialogue5").style.display = "none";
+          }, 35000);
+          setTimeout (function() {
+            document.getElementById("actionBox2").style.display = "block";
+          }, 36000);
+    }
+});
+  
+function secondCalm() {
+document.getElementById("textBox3").style.display = "block";
+  document.getElementById("dialogue2").style.display = "block";
+  setTimeout (function() {
+typeWriter2();
+  }, 500);
+setTimeout (function () {
+  document.getElementById("textBox3").style.display = "none";
+}, 3700);
+  }
+
+  function thirdAttack() {
+document.getElementById("actionBox2").style.display = "none";
+document.getElementById("insultBox2").style.display = "block";
+document.getElementById("displayText").style.display = "block";
+  }
+
+  function fourthAttack() {
+    document.getElementById("actionBox3").style.display = "none";
+    document.getElementById("insultBox3").style.display = "block";
+    document.getElementById("displayText").style.display = "block";
+  }
+
+
+document.getElementById('insultTextBox2').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('display').textContent = this.value;
+        this.value = '';
+        document.getElementById('insultBox2').style.display = "none";
+        document.getElementById('displayBox').style.display = "flex";
+       enterInsult2();
+        setTimeout (function() {
+          document.getElementById('displayBox').style.display = "none";
+        }, 2000);
+        setTimeout (function() {
+          document.getElementById("textBox9").style.display = "block";
+          typeWriter8();
+        }, 8000);
+        setTimeout (function() {
+          document.getElementById("textBox9").style.display = "none";
+          document.getElementById("dialogue8").style.display = "none";
+        }, 15000);
+        setTimeout (function() {
+          var punchAudio = document.getElementById("punchAudio");
+  if (punchAudio) {
+    punchAudio.currentTime = 0;
+    punchAudio.play();
+      }
+          document.getElementById("punchOpponent").style.display = "block";
+          document.getElementById("angryOpponent").style.display = "none";
+          document.getElementById("textBox10").style.display = "block";
+          typeWriter9();
+        }, 16000);
+        setTimeout (function() {
+          document.getElementById("textBox10").style.display = "none";
+          document.getElementById("dialogue9").style.display = "none";
+           document.getElementById("punchOpponent").style.display = "none";
+           document.getElementById("angryOpponent").style.display = "block";
+        }, 20000);
+        setTimeout (function() {
+          document.getElementById("textBox11").style.display = "block";
+          document.getElementById("dialogue10").style.display = "block";
+          typeWriter10();
+          thirdHit();
+        }, 21000);
+        setTimeout (function() {
+          document.getElementById("textBox11").style.display = "none";
+          document.getElementById("dialogue10").style.display = "none";
+        }, 27000);
+        setTimeout (function() {
+          document.getElementById("actionBox3").style.display = "block";
+        }, 28000);
+      }
+    });
+
+function enterInsult2() {
+  setTimeout (function() {
+      document.getElementById("textBox5").style.display = "block";
+      document.getElementById("dialogue4").style.display = "block";
+   typeWriter4();
+        }, 3000);
+          setTimeout (function() {
+          document.getElementById("textBox5").style.display = "none";
+          document.getElementById("dialogue4").style.display = "none";
+        }, 6000);
+oppHealth -=10;
+if (oppHealth < 0) health = 0;
+document.getElementById('oppHealthValue').textContent = oppHealth;
+}
+
+document.getElementById('insultTextBox3').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        document.getElementById('display').textContent = this.value;
+        this.value = '';
+        document.getElementById('insultBox3').style.display = "none";
+        document.getElementById('displayBox').style.display = "flex";
+        enterInsult3();
+         setTimeout (function() {
+          document.getElementById('displayBox').style.display = "none";
+        }, 2000);
+        setTimeout (function() {
+          document.getElementById("textBox18").style.display = "block";
+          document.getElementById("dialogue17").style.display = "block";
+          typeWriter17();
+        }, 8000);
+        setTimeout (function() {
+          document.getElementById("textBox18").style.display = "none";
+          document.getElementById("dialogue17").style.display = "none";
+        }, 15000);
+         setTimeout (function() {
+  document.getElementById("dialogue13").style.display = "block";
+  document.getElementById("textBox14").style.display = "block";
+  typeWriter13();
+}, 16000);
+setTimeout (function() {
+  document.getElementById("dialogue13").style.display = "none";
+  document.getElementById("textBox14").style.display = "none";
+}, 22000);
+setTimeout (function() {
+  document.getElementById("actionBox4").style.display = "block";
+}, 23000);
+    }
+  });
+
+  function enterInsult3() {
+  setTimeout (function() {
+      document.getElementById("textBox17").style.display = "block";
+      document.getElementById("dialogue16").style.display = "block";
+   typeWriter16();
+        }, 3000);
+          setTimeout (function() {
+          document.getElementById("textBox17").style.display = "none";
+          document.getElementById("dialogue16").style.display = "none";
+        }, 6000);
+oppHealth -=30;
+if (oppHealth < 0) health = 0;
+document.getElementById('oppHealthValue').textContent = oppHealth;
+}
+
+function thirdCalm() {
+  document.getElementById("actionBox4").style.display = "none";
+  document.getElementById("textBox14").style.display = "none";
+  setTimeout (function() {
+  document.getElementById("dialogue14").style.display = "block";
+  document.getElementById("textBox15").style.display = "block";
+  typeWriter14();
+  yrHealth +=20;
+if (yrHealth < 0) health = 0;
+document.getElementById('yrHealthValue').textContent = yrHealth;
+  }, 1000);
+  setTimeout (function() {
+  document.getElementById("dialogue14").style.display = "none";
+  document.getElementById("textBox15").style.display = "none";
+  }, 7000);
+   setTimeout (function() {
+  document.getElementById("dialogue18").style.display = "block";
+  document.getElementById("textBox19").style.display = "block";
+  typeWriter18();
+  }, 8000);
+setTimeout (function() {
+  document.getElementById("dialogue18").style.display = "none";
+  document.getElementById("textBox19").style.display = "none";
+  }, 14000);
+  setTimeout (function() {
+    document.getElementById("fist").style.display = "block";
+     var punchAudio = document.getElementById("punchAudio");
+  if (punchAudio) {
+    punchAudio.currentTime = 0;
+    punchAudio.play();
+      }
+      hideAllTextBoxes();
+      KO();
+         document.querySelector("#background video").style.display = "none";
+         document.getElementById("k").style.display = "block";
+        document.getElementById("o").style.display = "block";
+          document.getElementById("ko").style.display = "block";
+       }, 14050);     
+       setTimeout (function() {
+        document.getElementById("finalBackground").style.opacity = "1"
+        fadeOutBattleAudio();
+       }, 20000);
+       setTimeout (function() {
+        document.getElementById("finalTxt1").style.display = "block";
+        finalTypeWriter1();
+       }, 22000);
+       setTimeout (function() {
+        document.getElementById("finalTxt1").style.display = "none";
+       }, 28000);
+        setTimeout (function() {
+          document.getElementById("finalTxt2").style.display = "block";
+          finalTypeWriter2();
+        }, 30000);
+        setTimeout (function() {
+          document.getElementById("finalTxt2").style.display = "none";
+        }, 40000);
+         setTimeout (function() {
+          document.getElementById("finalTxt3").style.display = "block";
+          finalTypeWriter3();
+        }, 42000);
+        setTimeout (function() {
+          document.getElementById("finalTxt3").style.display = "none";
+        }, 52000);
+         setTimeout (function() {
+          document.getElementById("finalTxt4").style.display = "block";
+          finalTypeWriter4();
+        }, 53000);
+        setTimeout (function() {
+          document.getElementById("finalTxt4").style.display = "none";
+        }, 59000);
+         setTimeout (function() {
+          document.getElementById("finalTxt5").style.display = "block";
+          finalTypeWriter5();
+        }, 60000);
+        setTimeout (function() {
+          document.getElementById("finalTxt5").style.display = "none";
+        }, 66000);
+         setTimeout (function() {
+          document.getElementById("finalTxt6").style.display = "block";
+          finalTypeWriter6();
+        }, 67000);
+        setTimeout (function() {
+          document.getElementById("finalTxt6").style.display = "none";
+        }, 73000);
+        setTimeout (function() {
+          document.getElementById("finalTxt7").style.display = "block";
+          finalTypeWriter7();
+          playFinalAudio();
+        }, 74000);
+        setTimeout (function() {
+          document.getElementById("finalTxt7").style.display = "none";
+        }, 80000);
+         setTimeout (function() {
+          document.getElementById("finalTxt8").style.display = "block";
+          finalTypeWriter8();
+        }, 81000);
+        setTimeout (function() {
+          document.getElementById("finalTxt8").style.display = "none";
+        }, 87000);
+         setTimeout (function() {
+          document.getElementById("finalTxt9").style.display = "block";
+          finalTypeWriter9();
+        }, 88000);
+        setTimeout (function() {
+          document.getElementById("endButton").style.display = "block";
+        }, 97000);
+}
+
+function punchBack() {
+  document.getElementById("actionBox3").style.display = "none";
+setTimeout (function() {
+  document.getElementById("dialogue11").style.display = "block";
+  document.getElementById("textBox12").style.display = "block";
+  typeWriter11();
+}, 1000);
+setTimeout (function() {
+  document.getElementById("dialogue11").style.display = "none";
+  document.getElementById("textBox12").style.display = "none";
+  }, 7000);
+  setTimeout (function () {
+    document.getElementById("dialogue12").style.display = "block";
+    document.getElementById("textBox13").style.display = "block";
+    typeWriter12();
+  }, 8000);
+setTimeout (function() {
+  document.getElementById("dialogue12").style.display = "none";
+  document.getElementById("textBox13").style.display = "none";
+  }, 14000);
+setTimeout (function() {
+  document.getElementById("dialogue13").style.display = "block";
+  document.getElementById("textBox14").style.display = "block";
+  typeWriter13();
+}, 15000);
+setTimeout (function() {
+  document.getElementById("dialogue13").style.display = "none";
+  document.getElementById("textBox14").style.display = "none";
+  }, 22000);
+setTimeout (function() {
+  document.getElementById("actionBox4").style.display = "block";
+}, 23000);
+  }
+
+  function hideAllTextBoxes() {
+    document.getElementById("textBox").style.display = "none";
+    for (let i = 2; i <= 19; i++) {
+      document.getElementById(`textBox${i}`).style.display = "none";
+    }
+  }
+
+function playFinalAudio() {
+  const finalAudio = document.getElementById("finalAudio");
+  finalAudio.volume = 0; // Start silent
+  finalAudio.loop = true;
+  finalAudio.play();
+  
+  // Fade in over 3 seconds
+  let currentVolume = 0;
+  const fadeInterval = setInterval(function() {
+    currentVolume += 0.02; 
+    if (currentVolume >= 1) {
+      currentVolume = 1;
+      clearInterval(fadeInterval);
+    }
+    finalAudio.volume = currentVolume;
+  }, 100); // Update every 100ms
+}
+
+function fadeOutBattleAudio() {
+  const battleAudio = document.getElementById("battleAudio");
+  let currentVolume = battleAudio.volume;
+  
+  // Fade out over 3 seconds
+  const fadeInterval = setInterval(function() {
+    currentVolume -= 0.04; 
+    if (currentVolume <= 0) {
+      currentVolume = 0;
+      battleAudio.volume = 0;
+      battleAudio.pause();
+      clearInterval(fadeInterval);
+    } else {
+      battleAudio.volume = currentVolume;
+    }
+  }, 100); // Update every 100ms
+}
+
+</script>
+
+
+      </body>
+      </html>

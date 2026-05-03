@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+
+      <style>
+
+body, html {
+  background-color: blue;;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#text {
+  font-family: 'Arial', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 20%;
+  color: white;
+  z-index: 10000;
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+ #background video {
+    width: 100vw;   
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    padding: 0;
+    }
+
+</style>
+
+<audio id="endAudio" src="gamemusic2.m4a" autoplay loop ></audio>
+
+<div id = "background">
+    <video autoplay muted loop>
+        <source src="cyberspace5.mp4" type="video/mp4">
+    </video>
+    </div>
+
+<div id = "text">to be continued...</div>
+
+</body>
+</html>

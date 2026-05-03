@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        
+<style>
+  html, body {
+  margin: 0;
+  padding: 0;
+justify-content: center;
+  }
+
+    #magnets {
+      position: relative;
+      width: 100vw;
+      height: 2500px;
+    }
+
+    #magnets > div {
+      position: absolute;
+      cursor: grab;
+    }
+
+    #magnets img {
+      width: 80%;
+      height: auto;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    #picture {
+      position: absolute;
+      top: 0%;
+      left: 55%;
+    }
+
+    #picture img {
+      width: 110%;
+      height: auto;
+    }
+
+    #divide {
+      position: absolute;
+      top: 100px;
+      left: 0px;
+    }
+
+    #divide img {
+      width: 1700px;
+      height: auto;
+    }
+
+    #s {
+      width: 18%;
+      height: auto;
+    }
+
+  
+    #openDoor {
+      position: relative;
+      bottom: 0;
+      left: 1100px;
+      z-index: 10;
+    }
+    #openDoor img {
+    height: 100%;
+    width: auto;
+    }
+
+  </style>
+
+<!--
+<div id = "picture">
+  <img src = "fridgeimg2.png">
+</div>
+
+
+<div id = "divide">
+  <img src = "fridgedivide.png">
+</div>
+-->
+   <audio id = "backgroundMusic" autoplay loop>
+  <source src="partytheme2(amplified).mp3" type="audio/mpeg">
+</audio>
+
+<div id = "magnets">
+
+<div id = "t" style = "top:380px; left: 100px;">
+    <img src = "t.png" draggable="true;">
+</div>
+
+<div id = "h" style = "top: 360px; left: 300px;">
+    <img src = "h.png" draggable="true;">
+    </div>
+
+    <div id = "e" style = "top: 380px; left: 550px;">
+    <img src = "e.png" draggable="true;">
+    </div>
+
+    
+    <div id = "o" style = "top: 900px; left: 500px;">
+    <img src = "o.png" draggable="true;">
+    </div>
+
+    <div id = "n" style = "top: 920px; left: 700px;">
+    <img src = "n.png" draggable="true;"> 
+</div>
+
+<div id = "l" style = "top: 900px; left: 900px;"> 
+    <img src = "l.png" draggable="true;">
+    </div>
+
+    <div id = "y" style = "top: 940px; left: 1050px;">
+    <img src = "y.png" draggable="true;" >
+</div>
+
+
+<div id = "w" style = "top: 1150px; left: 300px;">
+    <img src = "w.png" draggable="true;">
+    </div>
+
+<div id = "a" style = "top: 1160px; left: 570px;">
+    <img src = "A.png" draggable="true;">
+    </div>
+
+    <div id="y2" style = "top: 1180px; left: 750px;">
+    <img src = "y.png" draggable="true;">
+    </div>
+
+    <div id = "o2" style = "top: 1500px; left: 175px;">
+    <img src = "o.png" draggable="true;">
+    </div>
+
+    <div id = "u" style = "top: 1520px; left: 400px;">
+    <img src = "u.png" draggable="true;">
+    </div>
+
+    <div id = "t2" style = "top: 1475px; left: 600px;">
+    <img src = "t.png" draggable="true;">
+    </div>
+
+    <div id = "i" style = "top: 1500px; left: 1000px;">
+    <img src = "i.png" draggable="true;">
+    </div>
+
+    <div id = "s" style = "top: 1470px; left: 1100px;">
+    <img src = "s.png" draggable="true;">
+    </div>
+
+    <div id = "i2" style = "top: 1900px; left: 1000px;">
+    <img src = "i.png" draggable="true;">
+    </div>
+
+    <div id = "n2" style = "top: 1920px; left: 1100px;">
+    <img src = "n.png" draggable="true;">
+    </div>
+
+  </div>
+
+  <div id = "openDoor">
+<a href="open.html">
+   <img src = "doorhandle2.png">
+</a>
+</div>
+
+    <script>
+
+// Make each letter draggable
+const magnetDivs = document.querySelectorAll('#magnets > div');
+magnetDivs.forEach(div => {
+  dragElement(div);
+});
+
+function dragElement(elmnt) {
+  let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+    </script>
+
+  </body>
+  </html>
