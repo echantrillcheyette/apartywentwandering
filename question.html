@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        
+<style>
+  html, body {
+            background: black;
+  height: 100%;
+  margin: 10px;
+  padding: 0;
+  }
+
+#text {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top: 5%;
+}
+
+</style>
+
+
+<div id="text">
+  </div>
+
+  <script>
+
+
+var i = 0;
+var txt = "Oh, hello..."; /* The text */
+var speed = 70;
+var ttsHasRun = false; // Flag to ensure TTS only runs once
+
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      // Typewriter finished
+    }
+  }
+
+
+  // Run typewriter and TTS on page load
+  window.onload = function() {
+    setTimeout(function() {
+      // Start TTS and typewriter together, but only once
+      if (!ttsHasRun) {
+        window.speechSynthesis.cancel();
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = txt;
+        msg.rate = 1.1; // Adjust rate if needed to sync with typewriter
+        window.speechSynthesis.speak(msg);
+        ttsHasRun = true;
+      }
+      typeWriter();
+    }, 1000); // 1000ms = 1 second
+  };
+
+// TTS now starts at the same time as the typewriter effect
+ window.speechSynthesis.cancel();
+    var msg = new SpeechSynthesisUtterance();
+msg.text = "Oh, hello";
+window.speechSynthesis.speak(msg);
+ 
+  </script>
+
+    </body>
+</html>
