@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        
+<style>
+
+html, body {
+       display: flex;
+background: black;
+justify-content: center;
+align-items: center;
+margin: 0;
+padding: 0;
+overflow: hidden;
+min-height: 100vh;
+flex-direction: column;
+  }
+
+    #scene {
+        background: black;
+    position: relative;
+    width: 100vw;       
+    height: 100vh;
+  transform: translateY(-40px);
+  top: 40px;
+  z-index: 1;
+    }
+
+    #background video {
+    width: 100%;   
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    }
+
+    #road img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    #glint video {
+        position: absolute;
+        top: 20%;
+        left: 75%;
+        width: 20%;
+        height: 20%;
+        pointer-events: none;
+    }
+
+      #text {
+        color: blue;
+        margin-top: 0;
+        text-align: center;
+        z-index: 10;
+        position: absolute;
+        top: 70%;
+        font-size: 30px;
+        border: 1px solid grey;
+        background: yellow;   
+    }
+
+
+        @keyframes fadeInUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.fadeInUp-animation {
+  animation: 4s fadeInUp;
+}
+
+.container{
+  margin-top: 20px;
+  position: fixed;
+  display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            margin-bottom: 20px; /* Add space between the containers */
+  padding-top: 25px;
+  bottom: 60px;
+  z-index: 1000;
+  visibility: hidden;
+}
+
+.line1 {
+  text-align:center;
+   color: yellow;
+  font-size: 30px;
+  padding: 8px 45px;
+  position: relative;
+  top: 0px;
+  display: none; /* hide all slides until JS shows one */
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid grey;
+  background: blue;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  margin-left: -60px;
+  margin-right: -60px;
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+            left: 0;
+            border-radius: 0 3px 3px 0;
+        }
+
+.confirm {
+    color: yellow;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  position: fixed;
+  bottom: 40px;
+  text-align: center;
+  white-space: nowrap;
+  display: none;
+  z-index: 1000;
+}
+
+@keyframes fade-inout {
+  0%{ opacity: 1;}
+  100%{ opacity: 0.25;}
+}
+
+.confirm {
+    animation: fade-inout 1.5s infinite alternate;
+}
+
+#tp1 img {
+position: absolute;
+top:3%;
+left:-7%;
+width: 350px;
+height: 350px;
+}
+
+#tp2 img {
+    position: absolute;
+top: 2%;
+left: 17%;
+width: 200px;
+height: 200px;
+
+}
+
+#tp3 img {
+    position: absolute;
+top: 3%;
+left: 33%;
+width: 100px;
+height: 100px;
+
+}
+
+#tp4 img {
+    position: absolute;
+    top: 3%;
+right: 33%;
+width: 100px;
+height: 100px;
+}
+
+#tp5 img {
+     position: absolute;
+top: 2%;
+right: 17%;
+width: 200px;
+height: 200px;
+}
+
+#tp6 img {
+position: absolute;
+top:3%;
+right:-7%;
+width: 350px;
+height: 350px;
+}
+
+</style>
+
+<div id = "scene">
+    <!--
+<div id = "background">
+    <video autoplay muted loop>
+        <source src="cyberspace5.mp4" type="video/mp4">
+    </video>
+</div>
+
+-->
+<div id = "road">
+    <img src = "road.png">
+</div>
+
+    
+<div id = "tp1">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp2">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp3">
+    <img src = "tpstatic.png">
+</div>
+
+     
+<div id = "tp4">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp5">
+    <img src = "tpstatic.png">
+</div>
+
+<div id = "tp6">
+    <img src = "tpstatic.png">
+</div>
+
+<div class = "fadeInUp-animation">
+<div id = "glint">
+    <video autoplay muted loop>
+        <source src="spark1.1.mp4" type="video/mp4">
+    </video>
+</div>
+
+</div>
+</div>
+
+<div id = "text">
+</div>
+
+<div class="container">
+
+  <!-- multiple slides for container 1 -->
+  <div class="line1">Investigate the shiny thing</div>
+  <div class="line1">Look behind you</div>
+  <div class="line1">Stand still and soak up the atmosphere</div>
+
+  <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1,0)"></span>
+    <span class="dot" onclick="currentSlide(2,0)"></span>
+    <span class="dot" onclick="currentSlide(3,0)"></span>
+  </div>
+</div>
+
+<div class = "confirm">press enter to confirm your choice...</div>
+
+<script>
+  var i = 0;
+  var txt = "You stand for a moment, until you notice something glinting a little way ahead."; /* The text */
+  var speed = 75;
+
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("text").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+     } }
+
+  setTimeout (function() {
+    window.onload = typeWriter();
+  }, 2000);
+ 
+  var slideIndex = [1, 1];
+var slideId = ["line1"];
+
+function showSlides(n, no) {
+  var x = document.getElementsByClassName(slideId[no]);
+  if (!x || x.length === 0) return;
+  if (n > x.length) slideIndex[no] = 1;
+  if (n < 1) slideIndex[no] = x.length;
+  for (var i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex[no] - 1].style.display = "block";
+}
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function currentSlide(n, no) {
+  showSlides(slideIndex[no] = n, no);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  showSlides(1, 0);
+ showSlides(1, 1);
+});
+
+function hideArrows() {
+  const prevButtons = document.getElementsByClassName("prev");
+  const nextButtons = document.getElementsByClassName("next");
+  for (let i = 0; i < prevButtons.length; i++) {
+    prevButtons[i].style.display = "none";
+  }
+  for (let i = 0; i < nextButtons.length; i++) {
+    nextButtons[i].style.display = "none";
+  }
+}
+
+function hideConfirm() {
+  const confirm = document.getElementsByClassName("confirm");
+  for (let i = 0; i < confirm.length; i++) {
+    confirm[i].style.display = "none";
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.code === "Enter") {
+    event.preventDefault();
+    hideArrows(); 
+    hideConfirm();
+  }
+});
+
+
+function showContainer() {
+    const containers = document.getElementsByClassName("container");
+    for (let i = 0; i < containers.length; i++) {
+        containers[i].style.visibility = "visible";
+    }
+}
+
+setTimeout (function() {
+    window.onload = showContainer();
+  }, 12000);
+
+
+function showConfirm() {
+  const confirm = document.getElementsByClassName("confirm");
+  for (let i = 0; i < confirm.length; i++) {
+    confirm[i].style.display = "block";
+  }
+}
+
+setTimeout (function() {
+    window.onload = showConfirm();
+  }, 18000);
+
+const el = document.getElementById("glint");
+el.style.visibility = "hidden";
+el.classList.remove("fadeInUp-animation");
+
+// Show and animate after timeout
+setTimeout(function() {
+  el.style.visibility = "visible";
+  el.classList.add("fadeInUp-animation");
+}, 2000);
+
+</script>
+
+</body>
+</html>
