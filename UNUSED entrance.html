@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body onload = "typeWriter()">
+
+<style>
+
+         html, body {
+            background: black;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+      transform: scale(0.7);
+  transform-origin: top left;
+}
+
+
+#figure1 {
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    z-index: 2;
+
+}
+
+#figure1 img {
+    width: 150%;
+    height: auto;
+}
+
+#figure2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+
+#figure2 img {
+    width: 50%;
+    height: auto;
+}
+
+#figure3 {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+}
+
+#figure3 img {
+    width: 60%;
+    height: auto;
+}
+
+#figure4 {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+}
+
+#figure4 img {
+width: 140%;
+height: auto;
+}
+
+#figure5 {
+    position: absolute;
+    top: 23%;
+    left: 30%;
+    z-index: 1;
+}
+
+#figure5 img {
+    width: 43%;
+    height: auto;
+}
+
+#speech {
+    position: absolute;
+    top: 10;
+    left: 27%;
+}
+
+#speech img {
+    width: 50%;
+    height: auto;
+}
+
+#room {
+     position: relative;
+  min-height: 100vh;
+}
+
+  #text {
+      position: absolute;
+        font-family:'Courier New', Courier, monospace;
+        font-size: 30px;
+        color: white;
+        margin-top: 100px;
+        padding: 5px;
+        bottom: 0;
+        right: 0;
+        left: 50%;
+        top: 110%;
+        
+    }
+
+
+</style>
+
+<div id = "room">
+
+   <div id = "figure1">
+    <img src = "standing.png">
+   </div>
+
+   <div id = "figure2">
+    <img src = "whitedrink2.png">
+   </div>
+
+   <div id = "figure3">
+    <img src = "whitedrink3.png">
+   </div>
+
+     <div id = "figure4">
+    <img src = "whitetalk.png">
+   </div>
+
+     <div id = "figure5">
+    <img src = "whitestand.png">
+   </div>
+
+     <div id = "speech">
+    <img src = "whitechat.png">
+   </div>
+ 
+   <div id = "text"></div>
+    
+</div>
+
+<script>
+var i = 0;
+var txt = "You are left standing at the mouth of the room, not quite sure how to hold yourself or what to do with your arms. People are huddled in groups chatting, laughing, nursing drinks (and not budging, nor batting an eye, as you enter)."; 
+var speed = 90;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("text").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+</script>
+
+</body>
+</html>
